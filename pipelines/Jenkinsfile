@@ -1,0 +1,10 @@
+@Library ('skaler-jenkins-library@safety') _
+
+DB_CRED_NAME = 'demo-robo-mongo'
+AGENT_LABEL = 'ubuntu' // or 'windows'
+
+withCredentials(
+    [usernamePassword(credentialsId: DB_CRED_NAME, passwordVariable: 'DB_CRED_PSW', usernameVariable: 'DB_CRED_USR')]
+    ) {
+        genericBuildPipeline agentLabel: AGENT_LABEL
+    }
